@@ -77,6 +77,39 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
+			<plugin>
+				<groupId>com.googlecode.cmake-maven-project</groupId>
+				<artifactId>cmake-maven-plugin</artifactId>
+				<version>3.23.2-b1</version>
+				<executions>
+					<execution>
+						<id>cmake-generate</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<sourcePath>${project.basedir}</sourcePath>
+							<targetPath>${project.basedir}/build</targetPath>
+							<options>
+								<option>-DCMAKE_BUILD_TYPE=Release</option>
+							</options>
+						</configuration>
+					</execution>
+					<execution>
+						<id>cmake-compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<config>Release</config>
+							<projectDirectory>${project.basedir}/build</projectDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
